@@ -1,0 +1,12 @@
+.container {
+  background-color: var(--color-light);
+  padding: 1rem;
+}
+.link {
+  margin: 0 16px;
+  display: inline-block;
+  border: 1px solid;
+  padding: 2px 8px;
+  border-radius: 8px;
+  color: var(--color-link);
+}
