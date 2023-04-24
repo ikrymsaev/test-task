@@ -9,7 +9,7 @@ export default ({ mode }) => {
     plugins: [react()],
     resolve: {
       alias: {
-        '@/common': path.resolve(__dirname, './src/common'),
+        '@/common': path.resolve(__dirname, './src/App/common'),
         '@/modules': path.resolve(__dirname, './src/App/modules'),
         '@/features': path.resolve(__dirname, './src/App/features'),
         '@/components': path.resolve(__dirname, './src/App/components'),

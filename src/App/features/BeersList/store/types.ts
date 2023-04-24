@@ -1,5 +1,5 @@
-import { IRequestPagination } from '@/common/services/ApiService/types';
-import { TLoadingState } from '@/common/types';
+import { IRequestPagination } from 'src/App/common/services/ApiService/types';
+import { TLoadingState } from 'src/App/common/types';
 
 interface IBeerEntity {
   id: number;
