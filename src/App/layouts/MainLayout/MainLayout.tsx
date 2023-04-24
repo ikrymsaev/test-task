@@ -1,14 +1,12 @@
-import { Header } from "@/modules/Header/Header"
-import { Outlet } from "react-router-dom"
+import { Header } from '@/modules/Header/Header';
+import { Outlet } from 'react-router-dom';
 import styles from './MainLayout.module.scss';
 
-export const MainLayout = () => {
-  return (
-    <div>
-      <Header />
-      <div className={styles.content}>
-        <Outlet />
-      </div>
+export const MainLayout = (): JSX.Element => (
+  <div>
+    <Header />
+    <div className={styles.content}>
+      <Outlet />
     </div>
-  )
-}
+  </div>
+);

@@ -1,10 +1,10 @@
-import { useEffect } from "react";
-import useBeersStore from "./store";
-import { IBeerEntity } from "./store/types";
-import { InfoCard } from "@/modules/InfoCard/InfoCard";
-import { InfinityList } from "@/components/InfinityList/InfinityList";
+import { useEffect } from 'react';
+import useBeersStore from './store';
+import { IBeerEntity } from './store/types';
+import { InfoCard } from '@/modules/InfoCard/InfoCard';
+import { InfinityList } from '@/components/InfinityList/InfinityList';
 
-export const BeersList = () => {
+export const BeersList = (): JSX.Element => {
   const beersList = useBeersStore((store) => store.beersList);
   const beersLoadingState = useBeersStore((store) => store.loadingState);
   const pagination = useBeersStore((store) => store.pagination);
@@ -15,25 +15,26 @@ export const BeersList = () => {
 
   useEffect(() => {
     fetchBeers(pagination);
-  }, [fetchBeers, pagination])
+  }, [fetchBeers, pagination]);
 
-  useEffect(() => {
-    return () => {
+  useEffect(
+    () => (): void => {
       resetStore();
-    }
-  }, [resetStore])
+    },
+    [resetStore]
+  );
 
-  const handleScrollEnd = () => {
+  const handleScrollEnd = (): void => {
     if (beersLoadingState === 'done' && hasData) {
-      setPagination({ ...pagination, page: pagination.page + 1 })
+      setPagination({ ...pagination, page: pagination.page + 1 });
     }
-  }
+  };
 
   if (beersLoadingState === 'pending') {
-    return <div>Loading ...</div>
+    return <div>Loading ...</div>;
   }
   if (beersLoadingState === 'error') {
-    return <div>Something wrong</div>
+    return <div>Something wrong</div>;
   }
 
   return (
@@ -41,7 +42,7 @@ export const BeersList = () => {
       data={beersList}
       hasData={hasData}
       onScrollEnd={handleScrollEnd}
-      renderItem={(beer) => (
+      renderItem={(beer): JSX.Element => (
         <InfoCard
           key={beer.id}
           title={beer.name}
@@ -51,5 +52,5 @@ export const BeersList = () => {
         />
       )}
     />
-  )
-}
+  );
+};

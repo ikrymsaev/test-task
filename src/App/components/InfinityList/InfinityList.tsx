@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 interface IProps<T> {
@@ -8,21 +8,21 @@ interface IProps<T> {
   onScrollEnd?: () => void;
 }
 
-export function InfinityList <T>(props: IProps<T>): JSX.Element {
+export function InfinityList<T>(props: IProps<T>): JSX.Element {
   const { data, hasData, renderItem, onScrollEnd } = props;
   const { ref, inView } = useInView({
     threshold: 0,
-    rootMargin: '500px'
+    rootMargin: '500px',
   });
 
   useEffect(() => {
     inView && onScrollEnd?.();
-  }, [inView, onScrollEnd])
+  }, [inView, onScrollEnd]);
 
   return (
     <div>
       {data.map(renderItem)}
       {data.length && hasData && <div ref={ref} />}
     </div>
-  )
+  );
 }

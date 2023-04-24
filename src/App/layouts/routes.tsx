@@ -1,7 +1,7 @@
-import { createBrowserRouter } from "react-router-dom";
-import { MainLayout } from "./MainLayout/MainLayout";
-import { MainPage } from "./pages/MainPage/MainPage";
-import { BeersPage } from "./pages/BeersPage/BeersPage";
+import { createBrowserRouter } from 'react-router-dom';
+import { MainLayout } from './MainLayout/MainLayout';
+import { MainPage } from './pages/MainPage/MainPage';
+import { BeersPage } from './pages/BeersPage/BeersPage';
 
 export const routes = createBrowserRouter([
   {
@@ -16,6 +16,6 @@ export const routes = createBrowserRouter([
         path: '/beers',
         element: <BeersPage />,
       },
-    ]
+    ],
   },
 ]);

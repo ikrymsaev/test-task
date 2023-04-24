@@ -1,5 +1,6 @@
-import axios, { AxiosInstance, AxiosResponse } from "axios";
-import { TQueryParams } from "./types";
+/* eslint-disable no-console */
+import axios, { AxiosInstance, AxiosResponse } from 'axios';
+import { TQueryParams } from './types';
 
 const isDev = process.env.NODE_ENV !== 'production';
 
@@ -11,13 +12,20 @@ class ApiService {
   }
 
   private getQueryString = (params?: TQueryParams): string => {
-    if (!params || !Object.keys(params).length) return '';
-    return '?' + Object.entries(params).map(([k, v]) => `${k}=${v}`).join('&');
-  }
+    if (!params || !Object.keys(params).length) {
+      return '';
+    }
 
-  get = async <T>(path: string, queryParams?: TQueryParams) => {
+    return `?${Object.entries(params)
+      .map(([k, v]) => `${k}=${v}`)
+      .join('&')}`;
+  };
+
+  get = async <T>(path: string, queryParams?: TQueryParams): Promise<AxiosResponse<T, any>> => {
     const pathWithQuery = path + this.getQueryString(queryParams);
-    if (isDev) console.log('%c GET: ', 'color: #29acf2;', pathWithQuery);
+    if (isDev) {
+      console.log('%c GET: ', 'color: #29acf2;', pathWithQuery);
+    }
 
     return await this.httpService.get<string, AxiosResponse<T>>(pathWithQuery);
   };

@@ -1,9 +1,7 @@
-import { BeersList } from "@/features/BeersList/BeersList"
+import { BeersList } from '@/features/BeersList/BeersList';
 
-export const BeersPage = () => {
-  return (
-    <div>
-      <BeersList />
-    </div>
-  )
-}
+export const BeersPage = (): JSX.Element => (
+  <div>
+    <BeersList />
+  </div>
+);

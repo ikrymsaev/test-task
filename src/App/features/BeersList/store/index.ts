@@ -9,17 +9,14 @@ const useBeersStore = create<IBeersStore>((set, get) => ({
   beersList: [],
   hasData: true,
   pagination: DEFAULT_PAGINATION,
-  fetchBeers: async () => {
+  fetchBeers: async (): Promise<void> => {
     const { pagination, beersList } = get();
     set({ loadingState: beersList.length ? 'update' : 'pending' });
     try {
-      const { data } = await apiService.get<IBeerEntity[]>(
-        'beers',
-        {
-          page: pagination.page,
-          per_page: pagination.perPage
-        }
-      );
+      const { data } = await apiService.get<IBeerEntity[]>('beers', {
+        page: pagination.page,
+        per_page: pagination.perPage,
+      });
       set({
         beersList: [...beersList, ...data],
         loadingState: 'done',
@@ -29,17 +26,17 @@ const useBeersStore = create<IBeersStore>((set, get) => ({
       set({ loadingState: 'error' });
     }
   },
-  setPagination: (pagination: IRequestPagination) => {
-    set({ pagination, hasData: false })
+  setPagination: (pagination: IRequestPagination): void => {
+    set({ pagination, hasData: false });
   },
-  resetStore: () => {
+  resetStore: (): void => {
     set({
       loadingState: 'done',
       beersList: [],
       hasData: true,
       pagination: DEFAULT_PAGINATION,
-    })
-  }
+    });
+  },
 }));
 
 export default useBeersStore;

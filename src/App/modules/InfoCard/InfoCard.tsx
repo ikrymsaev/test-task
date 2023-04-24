@@ -23,10 +23,14 @@ export const InfoCard = React.memo((props: IProps): JSX.Element => {
         <p>{description}</p>
         {!!chips?.length && (
           <div className={styles.chips}>
-            {chips.map((chip, i) => <Chip key={`chip${i}-${chip}`}>{chip}</Chip>)}
+            {chips.map((chip, i) => (
+              <Chip key={`chip${i}-${chip}`}>{chip}</Chip>
+            ))}
           </div>
         )}
       </div>
     </div>
-  )
-})
+  );
+});
+
+InfoCard.displayName = 'InfoCard';
